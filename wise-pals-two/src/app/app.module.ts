@@ -13,6 +13,7 @@ import {MaterialModule} from 'src/material.module';
 import {HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 // import { AuthComponent } from './service/auth/auth.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
