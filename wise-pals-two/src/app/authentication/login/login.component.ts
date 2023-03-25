@@ -35,8 +35,15 @@ export class LoginComponent {
         console.log(this.result);
         if (this.result.accessToken) {
           console.log('Login successful');
+          console.log(this.result);
+          sessionStorage.setItem('accessToken',this.result.accessToken);
             sessionStorage.setItem('email',this.result.email);
+            sessionStorage.setItem('firstName',this.result.name);
+            sessionStorage.setItem('lastName',this.result.lastName);
+            sessionStorage.setItem('phone',this.result.phone);
+            sessionStorage.setItem('id',this.result.id);
             sessionStorage.setItem('roles',this.result.roles);
+
             this.router.navigate(['']);
           } else {
             console.log('Invalid credentials');

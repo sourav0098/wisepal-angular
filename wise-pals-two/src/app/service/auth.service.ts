@@ -25,5 +25,12 @@ export class AuthService {
     return response;
   }
 
+  isloggedin(){
+    return sessionStorage.getItem('email')!=null;
+  }
+
+  getrole(){
+    return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';
+  }
 
 }
