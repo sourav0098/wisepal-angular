@@ -5,3 +5,10 @@
 button {
   margin-right: 0.5rem;
 }
+
+span {
+  font-size: 10px;
+  font-family: sans-serif;
+  color: red;
+  display: block;
+}

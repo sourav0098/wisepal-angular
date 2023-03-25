@@ -15,12 +15,14 @@ export class AuthService {
 
   loginUser(email:any,password:any){
 
-    return this.http.post(`${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.LOGIN}`,
+    let response = this.http.post(`${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.LOGIN}`,
     {
       email,
       password
     }
     )
+    console.log('response: ',response);
+    return response;
   }
 
 

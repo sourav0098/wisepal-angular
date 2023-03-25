@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    <h2>Registeration</h2>
+    <h2>Register</h2>
   </mat-card-header>
   <mat-card-content>
     <form
@@ -11,22 +11,58 @@
       <mat-form-field class="full-width-input">
         <mat-label>First name</mat-label>
         <input matInput formControlName="name" />
+        <span
+          *ngIf="
+            registerform.controls.name.invalid &&
+            registerform.controls.name.touched
+          "
+          >Please enter a valid first name</span
+        >
       </mat-form-field>
+
       <mat-form-field class="full-width-input">
         <mat-label>Last name</mat-label>
         <input matInput formControlName="lastName" />
+        <span
+          *ngIf="
+            registerform.controls.lastName.invalid &&
+            registerform.controls.lastName.touched
+          "
+          >Please enter a valid last name</span
+        >
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>Cellphone</mat-label>
         <input matInput formControlName="phone" />
+        <span
+          *ngIf="
+            registerform.controls.phone.invalid &&
+            registerform.controls.phone.touched
+          "
+          >Enter 10 digits phone number</span
+        >
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>Email</mat-label>
-        <input matInput formControlName="email" />
+        <input matInput type="email" formControlName="email" />
+        <span
+          *ngIf="
+            registerform.controls.email.invalid &&
+            registerform.controls.email.touched
+          "
+          >Enter a valid email address</span
+        >
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>Password</mat-label>
         <input type="password" matInput formControlName="password" />
+        <span
+          *ngIf="
+            registerform.controls.password.invalid &&
+            registerform.controls.password.touched
+          "
+          >Enter a valid password</span
+        >
       </mat-form-field>
       <div>
         <button mat-raised-button color="primary">Submit</button>

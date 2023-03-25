@@ -10,11 +10,34 @@
     >
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
-        <input matInput type="email" name="email" ngModel />
+        <input
+          matInput
+          type="email"
+          name="email"
+          required
+          #email="ngModel"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          ngModel
+        />
+        <span *ngIf="email.invalid && email.touched" style="color: red"
+          >Please enter a Valid email</span
+        ><br />
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input matInput type="password" name="password" ngModel />
+        <input
+          matInput
+          type="password"
+          name="password"
+          required
+          #password="ngModel"
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"
+          ngModel
+        />
+        <span *ngIf="password.invalid && password.touched" style="color: red"
+          >Password must have at least 8 character, one upper case and a
+          number</span
+        ><br />
       </mat-form-field>
 
       <div>

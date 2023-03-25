@@ -31,7 +31,12 @@ export class RegisterComponent {
       this.service.RegisterUser(this.registerform.value).subscribe(result => {
         this.toastr.success('Please login to the application.','Registered successfully')
         //this.router.navigate(['login'])
-      });
+      },
+        error => {
+          this.toastr.error('Email already exists.')
+        }
+      
+      );
     } else {
       this.toastr.warning('Please enter valid data.')
     }
