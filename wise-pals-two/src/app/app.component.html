@@ -1,4 +1,26 @@
 <style>
+  .light {
+    --mainColor: hsl(203, 87%, 67%);
+    --hoverColor: hsl(203, 67%, 62%);
+    --backgroundColor: #f1f8fc;
+    --darkOne: hsl(251, 10%, 21%);
+    --darkTwo: hsl(260, 6%, 28%);
+    --lightOne: hsl(0, 0%, 57%);
+    --lightTwo: hsl(0, 0%, 67%);
+    --searchBar: rgba(255, 255, 255, 0.695);
+  }
+
+  .dark {
+    --mainColor: hsl(203, 87%, 67%);
+    --hoverColor: hsl(203, 67%, 62%);
+    --backgroundColor: #192e3a;
+    --darkOne: #f3f3f3;
+    --darkTwo: #fff;
+    --lightOne: #ccc;
+    --lightTwo: #e7e3e3;
+    /* --searchBar: hsla(203, 100%, 93%, 0.951); */
+    --searchBar: rgba(255, 255, 255, 0.695);
+  }
   :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -66,6 +88,7 @@
     max-width: 960px;
     flex-direction: column;
     align-items: center;
+    background-color: var(--backgroundColor);
   }
 
   svg.material-icons {
@@ -287,6 +310,10 @@
     }
   }
 
+  img:hover {
+    cursor: pointer;
+  }
+
   @media screen and (max-width: 575px) {
     svg#rocket-smoke {
       display: none;
@@ -297,11 +324,7 @@
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-  />
+  <img routerLink="" width="40" alt="App Logo" src="assets/logo.png" />
   <a routerLink="">Wise Pals</a>
   <a *ngIf="isLogged" href="https://en.wiktionary.org/wiki/hol">RoleTest</a>
   <div class="spacer"></div>
