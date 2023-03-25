@@ -17,14 +17,11 @@ export class LoginComponent {
   }
   result: any;
 
-  loginform = this.builder.group({
-    email: this.builder.control('', Validators.required),
-    password: this.builder.control('', Validators.required)
-  });
 
-  proceedlogin() {
-    if (this.loginform.valid) {
-      this.service.loginUser(this.loginform.value.email, this.loginform.value.password).subscribe(item => {
+  proceedlogin(loginForm:any) {
+    if (loginForm) {
+      console.log({loginForm});
+      this.service.loginUser(loginForm.email, loginForm.password).subscribe(item => {
         this.result = item;
         if (this.result.accessToken) {
             sessionStorage.setItem('email',this.result.email);
