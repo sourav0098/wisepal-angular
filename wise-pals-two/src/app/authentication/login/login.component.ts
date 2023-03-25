@@ -18,25 +18,21 @@ export class LoginComponent {
   result: any;
 
   loginform = this.builder.group({
-    id: this.builder.control('', Validators.required),
+    email: this.builder.control('', Validators.required),
     password: this.builder.control('', Validators.required)
   });
 
   proceedlogin() {
     if (this.loginform.valid) {
-      this.service.GetUserbyCode(this.loginform.value.id).subscribe(item => {
+      this.service.loginUser(this.loginform.value.email, this.loginform.value.password).subscribe(item => {
         this.result = item;
-        if (this.result.password === this.loginform.value.password) {
-          if (this.result.isactive) {
-            sessionStorage.setItem('username',this.result.id);
-            sessionStorage.setItem('role',this.result.role);
+        if (this.result.accessToken) {
+            sessionStorage.setItem('email',this.result.email);
+            sessionStorage.setItem('roles',this.result.roles);
             this.router.navigate(['']);
           } else {
-            this.toastr.error('Please contact Admin', 'InActive User');
+            this.toastr.error('Invalid credentials');
           }
-        } else {
-          this.toastr.error('Invalid credentials');
-        }
       });
     } else {
       this.toastr.warning('Please enter valid data.')

@@ -13,8 +13,14 @@ export class AuthService {
     return this.http.post(`${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.REGISTER}`,inputdata)
   }
 
-  GetUserbyCode(id:any){
-    return this.http.post(`${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.REGISTER}`,id)
+  loginUser(email:any,password:any){
+
+    return this.http.post(`${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.LOGIN}`,
+    {
+      email,
+      password
+    }
+    )
   }
 
 
