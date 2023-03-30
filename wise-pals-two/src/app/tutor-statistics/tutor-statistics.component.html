@@ -1,0 +1,26 @@
+<div class="container" style="height: 100vh">
+    <div class="paper" style="padding: 24px">
+      <h1>Tutor Statistics</h1>
+      <p>Number of times contacted: {{totalContacts}}</p>
+      <p>Skills for which the tutor was contacted this week:</p>
+  
+      <div style="padding: 0 24px">
+        <ul *ngIf="skills && skills.length > 0">
+          <li *ngFor="let skill of skills">{{skill | titlecase}}</li>
+        </ul>
+        <p *ngIf="!skills || skills.length === 0">No skills found</p>
+      </div>
+      
+  
+      <div style="padding: 16px 24px">
+        <canvas baseChart 
+                [datasets]="chartData()"
+                [labels]="chartLabels()"
+                [options]="options"
+                [legend]="barChartLegend"
+                [type]="barChartType"
+                [plugins]="barChartPlugins"></canvas>
+      </div>
+    </div>
+  </div>
+  
