@@ -16,6 +16,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { TutorStatisticsComponent } from './tutor-statistics/tutor-statistics.component';
 import { NgChartsModule } from 'ng2-charts';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { TutorListComponent } from './tutor-list/tutor-list.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { NgChartsModule } from 'ng2-charts';
     LoginComponent,
     HomeComponent,
     TutorStatisticsComponent,
+    SearchBarComponent,
+    TutorListComponent,
   ],
   imports: [
     BrowserModule,

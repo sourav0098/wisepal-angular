@@ -1,0 +1,13 @@
+.search-bar-container {
+  display: flex;
+}
+
+.search-input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.search-button {
+  margin-left: 10px;
+  height: 50px;
+}

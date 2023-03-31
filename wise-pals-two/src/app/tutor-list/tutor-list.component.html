@@ -1,0 +1,34 @@
+<div class="search-bar-container">
+    <mat-form-field class="search-input">
+      <input matInput type="text" placeholder="What do you want to learn?" [(ngModel)]="skill">
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="search-button" (click)="onSearch()">Search</button>
+  </div>
+  
+<div class="card-container">
+  <div class="card" *ngFor="let tutor of searchResults">
+    <div class="left-side" style="cursor: pointer;">
+        <img [src]="baseUrl + images + tutor.image" alt="tutor profile" />
+    </div>
+    <div class="center">
+      <div class="card-title">
+        <h3 style="cursor: pointer;">
+          {{ tutor.fname }} {{ tutor.lname }}
+        </h3>
+      </div>
+      <div class="skills">📚{{ tutor.skills.join(', ') }}</div>
+      <br />
+      <div class="spoken-languages">🗣{{ tutor.spokenLanguages.join(', ') }}</div>
+      <br />
+      <div class="description">{{ tutor.description.length > 425 ? tutor.description.substring(0, 210) + '...' : tutor.description }}</div>
+    </div>
+    <div class="right-side">
+      <div class="price">{{ tutor.currency }} ${{ tutor.hourlyRate }} /hr</div>
+      <div class="card-buttons">
+        <a routerLink="/contactTutor/{{ tutor._id }}">
+          <button class="btn">Contact Tutor</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
