@@ -18,6 +18,8 @@ import { TutorStatisticsComponent } from './tutor-statistics/tutor-statistics.co
 import { NgChartsModule } from 'ng2-charts';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TutorListComponent } from './tutor-list/tutor-list.component';
+import { ContactComponent } from './contact/contact.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { TutorListComponent } from './tutor-list/tutor-list.component';
     TutorStatisticsComponent,
     SearchBarComponent,
     TutorListComponent,
+    ContactComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,6 @@ import { TutorListComponent } from './tutor-list/tutor-list.component';
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
