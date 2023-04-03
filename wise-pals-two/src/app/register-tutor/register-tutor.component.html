@@ -1,0 +1,103 @@
+<h1 class="mat-headline-3">Register as a Tutor</h1>
+<div class="row">
+  <mat-form-field appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input matInput readonly value="Sourav" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput readonly value="Choudhary" />
+  </mat-form-field>
+</div>
+<div class="row">
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput readonly value="sourav@gmail.com" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Phone</mat-label>
+    <input matInput readonly value="9876543210" />
+  </mat-form-field>
+</div>
+<!-- Register Form -->
+<form class="example-form">
+  <!-- Skills Chips Input -->
+  <div class="row">
+    <mat-form-field class="example-chip-list" appearance="outline">
+      <mat-label>Skills</mat-label>
+      <mat-chip-grid #skillChipGrid aria-label="Add skills">
+        <mat-chip-row
+          *ngFor="let skill of skills"
+          (removed)="remove(skill, 'skill')"
+          [editable]="true"
+          (edited)="edit(skill, $event, 'skill')"
+          [aria-description]="'press enter to edit ' + skill.name"
+        >
+          {{ skill.name }}
+          <button matChipRemove [attr.aria-label]="'remove ' + skill.name">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        <input
+          placeholder="Add skills"
+          [matChipInputFor]="skillChipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event, 'skill')"
+        />
+      </mat-chip-grid>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field class="example-chip-list" appearance="outline">
+      <mat-label>Languages</mat-label>
+      <mat-chip-grid #languageChipGrid aria-label="Add languages">
+        <mat-chip-row
+          *ngFor="let language of languages"
+          (removed)="remove(language, 'language')"
+          [editable]="true"
+          (edited)="edit(language, $event, 'language')"
+          [aria-description]="'press enter to edit ' + language.name"
+        >
+          {{ language.name }}
+          <button matChipRemove [attr.aria-label]="'remove ' + language.name">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        <input
+          placeholder="Add languages"
+          [matChipInputFor]="languageChipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event, 'language')"
+        />
+      </mat-chip-grid>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Hourly Cost</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Currency</mat-label>
+      <mat-select>
+        <mat-option value="CAD">CAD</mat-option>
+        <mat-option value="USD">USD</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Tell us something about yourself</mat-label>
+      <textarea matInput matTextareaAutosize="false" [rows]="5"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <input type="file" accept=".jpg,.jpeg,.png" />
+  </div>
+  <div class="row">
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+</form>

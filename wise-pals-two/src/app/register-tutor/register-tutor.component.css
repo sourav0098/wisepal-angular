@@ -1,0 +1,16 @@
+.row {
+  display: flex;
+  gap: 20px;
+}
+.row mat-form-field {
+  width: 100%;
+}
+
+textarea.mat-input-element {
+  height: 100px;
+}
+.mat-headline-3{
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+

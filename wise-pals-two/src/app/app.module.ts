@@ -18,6 +18,12 @@ import { TutorStatisticsComponent } from './tutor-statistics/tutor-statistics.co
 import { NgChartsModule } from 'ng2-charts';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TutorListComponent } from './tutor-list/tutor-list.component';
+import { RegisterTutorComponent } from './register-tutor/register-tutor.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import { TutorProfileComponent } from './tutor-profile/tutor-profile.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -28,8 +34,11 @@ import { TutorListComponent } from './tutor-list/tutor-list.component';
     TutorStatisticsComponent,
     SearchBarComponent,
     TutorListComponent,
+    RegisterTutorComponent,
+    TutorProfileComponent,
   ],
   imports: [
+    MatInputModule,
     BrowserModule,
     AppRoutingModule,
     NgChartsModule,
@@ -39,6 +48,9 @@ import { TutorListComponent } from './tutor-list/tutor-list.component';
     HttpClientModule,
     ToastrModule.forRoot(),
     FormsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
