@@ -7,6 +7,8 @@ import { TutorStatisticsComponent } from './tutor-statistics/tutor-statistics.co
 import { TutorListComponent } from './tutor-list/tutor-list.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RegisterTutorComponent } from './register-tutor/register-tutor.component';
+import { TutorProfileComponent } from './tutor-profile/tutor-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +18,9 @@ const routes: Routes = [
   { path: 'tutorlist', component: TutorListComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'tutorlist', component: TutorListComponent },
+  { path: 'registerTutor', component:  RegisterTutorComponent },
+  { path: 'tutor/:id', component:  TutorProfileComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,50 @@
+.circular_image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: blue;
+  /* commented for demo
+    float: left;
+    margin-left: 125px;
+    margin-top: 20px;
+    */
+
+  /*for demo*/
+  display: inline-block;
+  vertical-align: middle;
+}
+.circular_image img {
+  width: 100%;
+}
+
+.name-head {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+.grid-item {
+  padding: 20px;
+  font-size: 18px;
+}
+
+.item1 {
+  grid-column: 1 / 2;
+}
+
+.item2 {
+  grid-column: 2 / 4;
+}
+
+.item3 {
+  grid-column: 4 / 5;
+}

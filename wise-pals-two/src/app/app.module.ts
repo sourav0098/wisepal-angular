@@ -20,6 +20,12 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TutorListComponent } from './tutor-list/tutor-list.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RegisterTutorComponent } from './register-tutor/register-tutor.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import { TutorProfileComponent } from './tutor-profile/tutor-profile.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -32,8 +38,11 @@ import { ProfileComponent } from './profile/profile.component';
     TutorListComponent,
     ContactComponent,
     ProfileComponent,
+    RegisterTutorComponent,
+    TutorProfileComponent,
   ],
   imports: [
+    MatInputModule,
     BrowserModule,
     AppRoutingModule,
     NgChartsModule,
@@ -43,6 +52,9 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule,
     ToastrModule.forRoot(),
     FormsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
