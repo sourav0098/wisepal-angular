@@ -17,10 +17,10 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'tutorlist', component: TutorListComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'contact/:id', component: ContactComponent },
   { path: 'tutorlist', component: TutorListComponent },
-  { path: 'registerTutor', component:  RegisterTutorComponent },
-  { path: 'tutor/:id', component:  TutorProfileComponent }
+  { path: 'registerTutor', component: RegisterTutorComponent },
+  { path: 'tutor/:id', component: TutorProfileComponent },
 ];
 
 @NgModule({
