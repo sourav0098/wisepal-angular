@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TutorService } from '../service/tutor.service';
+import { ContactService, IContact } from '../service/contact.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact',
@@ -22,7 +24,8 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private tutorService: TutorService
+    private tutorService: TutorService,
+    private contactService: ContactService
   ) {}
 
   ngOnInit() {
@@ -44,5 +47,27 @@ export class ContactComponent implements OnInit {
     console.log(this.contactForm.value.skill);
     console.log(this.contactForm.value.language);
     console.log(this.contactForm.value.description);
+    let data: IContact = {
+      description: this.contactForm.value.description!,
+      language: this.contactForm.value.language!,
+      skill: this.contactForm.value.skill!,
+      title: this.contactForm.value.title!,
+      tutor: this.tutorId,
+      user: '640b6fb90eafd4f1c758d245',
+    };
+    this.contactService.contact(data).subscribe((res) => {
+      this.contactForm.reset();
+      this.contactForm.controls['title'].setErrors(null);
+      this.contactForm.controls['description'].setErrors(null);
+      this.contactForm.controls['language'].setErrors(null);
+      this.contactForm.controls['skill'].setErrors(null);
+      this.contactForm.validator;
+      Swal.fire({
+        title: 'Success!',
+        text: 'You have contacted the tutor',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+      });
+    });
   }
 }

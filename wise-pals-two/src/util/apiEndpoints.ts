@@ -12,4 +12,5 @@ export const API_ENDPOINTS = {
   CONTACTS: '/api/v1/contact',
   STATISTICS: '/statistics',
   GET_TUTOR: '/api/v1/tutors/byId/?id=',
+  CONTACT: '/api/v1/contact/',
 };
