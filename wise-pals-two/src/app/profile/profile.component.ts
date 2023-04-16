@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
-import { ITutor, TutorService } from '../service/tutor.service';
+import { ITutor, IUpdateTutor, TutorService } from '../service/tutor.service';
 import {
   IProfile,
   IUpdateProfile,
@@ -18,8 +18,8 @@ import Swal from 'sweetalert2';
 export class ProfileComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  skills: String[] = ['react'];
-  languages: String[] = ['spanish'];
+  skills: string[] = ['react'];
+  languages: string[] = ['spanish'];
   profile: IProfile | undefined;
   tutor: ITutor | undefined;
   tutorForm = new FormGroup({
@@ -69,7 +69,23 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    let data: IUpdateTutor = {
+      id: this.tutor?._id!,
+      description: this.tutorForm.value.description!,
+      hourlyRate: this.tutorForm.value.cost!,
+      skills: this.skills,
+      spokenLanguages: this.languages,
+    };
+    this.tutorService.updateTutor(data).subscribe((res) => {
+      Swal.fire({
+        title: 'Success!',
+        text: 'You have updated you profile',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+      });
+    });
+  }
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -79,7 +95,7 @@ export class ProfileComponent implements OnInit {
     event.chipInput!.clear();
   }
 
-  remove(skill: String): void {
+  remove(skill: string): void {
     const index = this.skills.indexOf(skill);
     if (index >= 0) {
       this.skills.splice(index, 1);
@@ -93,7 +109,7 @@ export class ProfileComponent implements OnInit {
     event.chipInput!.clear();
   }
 
-  removeLanguage(language: String): void {
+  removeLanguage(language: string): void {
     const index = this.languages.indexOf(language);
     if (index >= 0) {
       this.languages.splice(index, 1);

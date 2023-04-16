@@ -9,6 +9,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterTutorComponent } from './register-tutor/register-tutor.component';
 import { TutorProfileComponent } from './tutor-profile/tutor-profile.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,8 +17,12 @@ const routes: Routes = [
   { path: 'statistics', component: TutorStatisticsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'tutorlist', component: TutorListComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'contact/:id', component: ContactComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  {
+    path: 'contact/:id',
+    component: ContactComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'tutorlist', component: TutorListComponent },
   { path: 'registerTutor', component: RegisterTutorComponent },
   { path: 'tutor/:id', component: TutorProfileComponent },

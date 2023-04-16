@@ -18,6 +18,14 @@ export interface ITutor {
   updatedAt: string;
 }
 
+export interface IUpdateTutor {
+  id: string;
+  description: string;
+  hourlyRate: number;
+  skills: string[];
+  spokenLanguages: string[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -37,6 +45,15 @@ export class TutorService {
       `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.GET_TUTOR_USER}${id}`
     );
     console.log('response: ' + response);
+    return response;
+  }
+
+  updateTutor(data: IUpdateTutor) {
+    let response = this.http.put(
+      `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.UPDATE_TUTOR}`,
+      data
+    );
+    console.log('response: ', response);
     return response;
   }
 }
