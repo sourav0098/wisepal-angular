@@ -32,7 +32,11 @@ export class TutorService {
     return response;
   }
 
-  getTodos() {
-    return this.http.get<any>('http://localhost:5000/api/todos');
+  getTutorByUser(id: any) {
+    let response = this.http.get<ITutor>(
+      `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.GET_TUTOR_USER}${id}`
+    );
+    console.log('response: ' + response);
+    return response;
   }
 }

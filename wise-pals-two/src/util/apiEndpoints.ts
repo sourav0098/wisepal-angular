@@ -13,4 +13,7 @@ export const API_ENDPOINTS = {
   STATISTICS: '/statistics',
   GET_TUTOR: '/api/v1/tutors/byId/?id=',
   CONTACT: '/api/v1/contact/',
+  GET_PROFILE: '/api/v1/user/byId/?id=',
+  GET_TUTOR_USER: '/api/v1/tutors/byUser/?id=',
+  UPDATE_PROFILE: '/api/v1/user/',
 };

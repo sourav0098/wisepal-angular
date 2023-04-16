@@ -18,6 +18,7 @@
             #name="ngModel"
             ngModel
             required
+            [ngModel]="profile?.name"
           />
           <div *ngIf="name.invalid && name.touched">Name is required</div>
         </mat-form-field>
@@ -30,6 +31,7 @@
             #lastName="ngModel"
             ngModel
             required
+            [ngModel]="profile?.lastName"
           />
           <div *ngIf="lastName.invalid && lastName.touched">
             Last Name is required
@@ -44,6 +46,8 @@
             #email="ngModel"
             ngModel
             required
+            [ngModel]="profile?.email"
+            disabled="true"
           />
           <div *ngIf="email.invalid && email.touched">Email is required</div>
         </mat-form-field>
@@ -56,6 +60,7 @@
             #phone="ngModel"
             ngModel
             required
+            [ngModel]="profile?.phone"
           />
           <div *ngIf="phone.invalid && phone.touched">Phone is required</div>
         </mat-form-field>
@@ -73,8 +78,8 @@
     <mat-card-content>
       <form
         class="example-form"
-        (ngSubmit)="onSubmit2(tutorForm)"
-        #tutorForm="ngForm"
+        [formGroup]="tutorForm"
+        (ngSubmit)="onSubmit()"
       >
         <mat-form-field class="example-chip-list" appearance="fill">
           <mat-label>Skills</mat-label>
@@ -121,26 +126,21 @@
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>Hourly Cost</mat-label>
-          <input
-            matInput
-            type="text"
-            name="lastName"
-            #lastName="ngModel"
-            ngModel
-            required
-          />
+          <input matInput type="text" formControlName="cost" />
           <div *ngIf="lastName.invalid && lastName.touched">
             Last Name is required
           </div>
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>Tell us about yourself</mat-label>
-          <textarea matInput type="text" name="description" rows="5"></textarea>
+          <textarea
+            matInput
+            type="text"
+            name="description"
+            rows="5"
+            formControlName="description"
+          ></textarea>
         </mat-form-field>
-        <input class="ng-hide" id="input-file-id" multiple type="file" />
-        <label for="input-file-id" class="md-button md-raised md-primary"
-          >Choose Files</label
-        >
         <div class="mt-1">
           <button mat-raised-button class="" color="primary">Update</button>
         </div>

@@ -43,10 +43,6 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.contactForm.value.title);
-    console.log(this.contactForm.value.skill);
-    console.log(this.contactForm.value.language);
-    console.log(this.contactForm.value.description);
     let data: IContact = {
       description: this.contactForm.value.description!,
       language: this.contactForm.value.language!,
