@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
     description: new FormControl('', Validators.required),
   });
   id: string = '';
+  isTutor: boolean = false;
 
   constructor(
     private tutorService: TutorService,
@@ -34,18 +35,21 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = '640b6fb90eafd4f1c758d245';
+    this.isTutor = sessionStorage.getItem('roles')!.includes('5777');
+    this.id = sessionStorage.getItem('id')!;
     this.profileService.getProfile(this.id).subscribe((res) => {
       this.profile = res;
     });
-    this.tutorService.getTutorByUser(this.id).subscribe((res) => {
-      this.tutor = res;
-      console.log(this.tutor);
-      this.skills = this.tutor.skills;
-      this.languages = this.tutor.spokenLanguages;
-      this.tutorForm.get('cost')?.setValue(this.tutor.hourlyRate);
-      this.tutorForm.get('description')?.setValue(this.tutor.description);
-    });
+    if (this.isTutor) {
+      this.tutorService.getTutorByUser(this.id).subscribe((res) => {
+        this.tutor = res;
+        console.log(this.tutor);
+        this.skills = this.tutor.skills;
+        this.languages = this.tutor.spokenLanguages;
+        this.tutorForm.get('cost')?.setValue(this.tutor.hourlyRate);
+        this.tutorForm.get('description')?.setValue(this.tutor.description);
+      });
+    }
   }
 
   onSubmit2(form: NgForm) {

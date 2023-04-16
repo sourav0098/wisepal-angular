@@ -65,13 +65,18 @@
           <div *ngIf="phone.invalid && phone.touched">Phone is required</div>
         </mat-form-field>
         <div>
-          <button mat-raised-button color="primary">Update</button>
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="!profileForm.valid"
+          >
+            Update
+          </button>
         </div>
       </form>
     </mat-card-content>
   </mat-card>
-
-  <mat-card class="mt-5">
+  <mat-card *ngIf="isTutor" class="mt-5">
     <mat-card-header>
       <h2>Tutor Profile</h2>
     </mat-card-header>
@@ -142,7 +147,16 @@
           ></textarea>
         </mat-form-field>
         <div class="mt-1">
-          <button mat-raised-button class="" color="primary">Update</button>
+          <button
+            mat-raised-button
+            class=""
+            color="primary"
+            [disabled]="
+              !tutorForm.valid || skills.length === 0 || languages.length === 0
+            "
+          >
+            Update
+          </button>
         </div>
       </form>
     </mat-card-content>
