@@ -329,6 +329,8 @@
   <a *ngIf="isLogged" href="https://en.wiktionary.org/wiki/hol">RoleTest</a>
   <div class="spacer"></div>
 
+  <a *ngIf="isLogged" routerLink="/profile">Profile</a>
+
   <a *ngIf="isLogged" routerLink="/login">Logout</a>
   <a *ngIf="!isLogged" routerLink="/login">Login</a>
   <a *ngIf="isLogged" routerLink="/statistics">Tutor Statistics</a>

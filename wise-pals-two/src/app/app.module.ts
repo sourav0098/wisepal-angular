@@ -18,6 +18,8 @@ import { TutorStatisticsComponent } from './tutor-statistics/tutor-statistics.co
 import { NgChartsModule } from 'ng2-charts';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TutorListComponent } from './tutor-list/tutor-list.component';
+import { ContactComponent } from './contact/contact.component';
+import { ProfileComponent } from './profile/profile.component';
 import { RegisterTutorComponent } from './register-tutor/register-tutor.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
@@ -37,6 +39,8 @@ import { ReviewFormComponent } from './tutor-profile/reviews/review-form/review-
     TutorStatisticsComponent,
     SearchBarComponent,
     TutorListComponent,
+    ContactComponent,
+    ProfileComponent,
     RegisterTutorComponent,
     TutorProfileComponent,
     ReviewsComponent,
@@ -59,6 +63,6 @@ import { ReviewFormComponent } from './tutor-profile/reviews/review-form/review-
     MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
