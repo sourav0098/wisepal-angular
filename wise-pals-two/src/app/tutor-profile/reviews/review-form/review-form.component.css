@@ -1,0 +1,15 @@
+.content {
+  padding: 0px 20px 0px 20px;
+}
+.star {
+  font-size: 36px;
+  color: #ccc;
+}
+
+.star.selected {
+  color: #ffc107;
+}
+
+.star.hovered {
+  color: #ff9800;
+}

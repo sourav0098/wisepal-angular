@@ -1,0 +1,23 @@
+<div style="width: 500px">
+  <h1 mat-dialog-title>Add a Review</h1>
+  <form [formGroup]="reviewForm" (ngSubmit)="onReviewFormSubmit()">
+    <div mat-dialog-conten class="content">
+      <mat-form-field appearance="outline">
+        <mat-label>Review</mat-label>
+        <textarea
+          matInput
+          matTextareaAutosize="false"
+          [rows]="7"
+          formControlName="review"
+        ></textarea>
+        <mat-error *ngIf="reviewForm.controls['review'].invalid">
+          Please provide a review
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button type="button" color="accent" [mat-dialog-close]="false">Cancel</button>
+      <button mat-raised-button type="submit" color="primary">Submit</button>
+    </div>
+  </form>
+</div>

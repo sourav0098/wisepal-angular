@@ -1,0 +1,26 @@
+<div>
+  <button
+    mat-raised-button
+    color="primary"
+    style="margin-bottom: 20px"
+    (click)="openReviewForm()"
+  >
+    Add a review
+  </button>
+
+  <!-- Reviews -->
+  <div style="padding: 0px 30px 0px 30px" *ngFor="let r of review.reviews">
+    <div
+      style="display: flex; align-items: center; justify-content: space-between"
+    >
+      <h6 class="mat-headline-6">
+        {{ r.userId.name }} {{ r.userId.lastName }}
+      </h6>
+      <p class="mat-h4">{{ r.createdAt | date : "dd MMMM yyyy, hh:mm a" }}</p>
+    </div>
+    <p class="mat-h4">
+      {{ r.review }}
+    </p>
+  </div>
+  <p *ngIf="review.length === 0" class="mat-h4">No reviews yet.</p>
+</div>

@@ -2,8 +2,8 @@
   <div class="grid-item item1">
     <div class="circular_image">
       <img
-        src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80"
-        alt="your-image-alt"
+        [src]="image"
+        alt="profile-image"
       />
     </div>
   </div>
@@ -11,23 +11,25 @@
     <div class="mat-typography">
       <p class="overline" style="color: gray; font-weight: 500">INSTRUCTOR</p>
       <h3 class="mat-headline-4 name-head">
-        Sourav Choudhary <mat-icon style="cursor: pointer">mail</mat-icon>
+        {{ tutor.fname}} {{ tutor.lname }}
+        <mat-icon style="cursor: pointer">mail</mat-icon>
       </h3>
-      <p class="mat-h4 mb-0">Skills: Reactjs, Nodejs</p>
-      <p class="mat-h4 mb-0">Knows English, Spanish</p>
-      <p class="mat-h4 mb-0">Cost: CAD $24/hr</p>
-      <p class="mat-h4 mb-0">Number of classes given: 0</p>
+      <p class="mat-h4 mb-0">Skills: {{ tutor.skills.join(", ") }}</p>
+      <p class="mat-h4 mb-0">Knows {{ tutor.spokenLanguages.join(", ") }}</p>
+      <p class="mat-h4 mb-0">
+        Cost: {{ tutor.currency }} ${{ tutor.hourlyRate }}/hr
+      </p>
+      <p class="mat-h4 mb-0">
+        Number of classes given: {{ tutor.classesGiven }}
+      </p>
     </div>
   </div>
 </div>
 <div class="grid-item item3">
   <h3 class="mat-headline-4 name-head">About Me</h3>
   <p class="mat-h4">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non, vel
-    aspernatur ab cum ipsum molestias sapiente, enim doloremque quod quidem eum
-    dignissimos nemo vitae nulla! Architecto accusamus neque, aut voluptatum
-    cupiditate, doloremque eveniet, laboriosam consequuntur molestiae debitis
-    ipsum labore. Quidem unde minima quibusdam reiciendis.
+    {{ tutor.description }}
   </p>
 </div>
 <hr />
+<app-reviews></app-reviews>

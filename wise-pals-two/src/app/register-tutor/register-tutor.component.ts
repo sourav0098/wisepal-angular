@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
-
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 export interface Skill {
   name: string;
@@ -21,6 +27,23 @@ export class RegisterTutorComponent {
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   skills: Skill[] = [];
   languages: Language[] = [];
+
+  tutorForm: FormGroup;
+
+  constructor(private _fb: FormBuilder) {
+    this.tutorForm = this._fb.group({
+      skills: new FormArray([], [Validators.required]),
+      languages: new FormArray([], [Validators.required]),
+      hourlyCost: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]*$'),
+      ]),
+      currency: new FormControl('',[
+        Validators.required
+      ]),
+      description: new FormControl(),
+    });
+  }
 
   add(event: MatChipInputEvent, type: string): void {
     const value = (event.value || '').trim();
@@ -76,6 +99,28 @@ export class RegisterTutorComponent {
       if (index >= 0) {
         this.languages[index].name = value;
       }
+    }
+  }
+
+  onTutorFormSubmit() {
+    const skillsFormArray = this.tutorForm.get('skills') as FormArray;
+    skillsFormArray.clear(); // Clear the existing form array
+
+    for (const skill of this.skills) {
+      skillsFormArray.push(new FormControl(skill.name)); // Add each skill to the form array
+    }
+
+    const languagesFormArray = this.tutorForm.get('languages') as FormArray;
+    languagesFormArray.clear(); // Clear the existing form array
+
+    for (const language of this.languages) {
+      languagesFormArray.push(new FormControl(language.name)); // Add each language to the form array
+    }
+
+    if (this.tutorForm.valid) {
+      console.log(this.tutorForm.value);
+    } else {
+      console.log("Invalid form");
     }
   }
 }

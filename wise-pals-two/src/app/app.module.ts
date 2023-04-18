@@ -24,6 +24,9 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import { TutorProfileComponent } from './tutor-profile/tutor-profile.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { ReviewsComponent } from './tutor-profile/reviews/reviews.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ReviewFormComponent } from './tutor-profile/reviews/review-form/review-form.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     TutorListComponent,
     RegisterTutorComponent,
     TutorProfileComponent,
+    ReviewsComponent,
+    ReviewFormComponent,
   ],
   imports: [
     MatInputModule,
@@ -51,6 +56,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatChipsModule,
     MatIconModule,
     MatGridListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

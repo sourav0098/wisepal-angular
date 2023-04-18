@@ -20,7 +20,11 @@
   </mat-form-field>
 </div>
 <!-- Register Form -->
-<form class="example-form">
+<form
+  class="example-form"
+  [formGroup]="tutorForm"
+  (ngSubmit)="onTutorFormSubmit()"
+>
   <!-- Skills Chips Input -->
   <div class="row">
     <mat-form-field class="example-chip-list" appearance="outline">
@@ -48,7 +52,7 @@
       </mat-chip-grid>
     </mat-form-field>
   </div>
-
+  <!-- Languages Chips Input -->
   <div class="row">
     <mat-form-field class="example-chip-list" appearance="outline">
       <mat-label>Languages</mat-label>
@@ -71,6 +75,7 @@
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
           [matChipInputAddOnBlur]="addOnBlur"
           (matChipInputTokenEnd)="add($event, 'language')"
+          formArrayName="languages"
         />
       </mat-chip-grid>
     </mat-form-field>
@@ -78,20 +83,31 @@
   <div class="row">
     <mat-form-field appearance="outline">
       <mat-label>Hourly Cost</mat-label>
-      <input matInput />
+      <input matInput formControlName="hourlyCost" />
+      <mat-error *ngIf="tutorForm.controls['hourlyCost'].invalid">
+        Hourly cost is required and should be a number
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Currency</mat-label>
-      <mat-select>
+      <mat-select formControlName="currency">
         <mat-option value="CAD">CAD</mat-option>
         <mat-option value="USD">USD</mat-option>
       </mat-select>
+      <mat-error *ngIf="tutorForm.controls['currency'].invalid">
+        Please provide a valid curreny
+      </mat-error>
     </mat-form-field>
   </div>
   <div class="row">
     <mat-form-field appearance="outline">
       <mat-label>Tell us something about yourself</mat-label>
-      <textarea matInput matTextareaAutosize="false" [rows]="5"></textarea>
+      <textarea
+        matInput
+        matTextareaAutosize="false"
+        [rows]="5"
+        formControlName="description"
+      ></textarea>
     </mat-form-field>
   </div>
   <div class="row">
