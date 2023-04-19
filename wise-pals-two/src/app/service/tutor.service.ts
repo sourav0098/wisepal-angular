@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_ENDPOINTS } from '../../util/apiEndpoints';
+import { Observable } from 'rxjs';
 
 export interface ITutor {
   _id: string;
@@ -36,24 +37,42 @@ export class TutorService {
     let response = this.http.get<ITutor>(
       `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.GET_TUTOR}${id}`
     );
-    console.log('response: ' + response);
     return response;
+  }
+
+  addTutor(data: any): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('image', data.image);
+    formData.append('skills', JSON.stringify(data.skills));
+    formData.append('languages', JSON.stringify(data.languages));
+    formData.append('hourlyCost', data.hourlyCost);
+    formData.append('currency', data.currency);
+    formData.append('description', data.description);
+
+    const headers = new HttpHeaders();
+    headers.append('Accept', 'application/json');
+
+    const options = {
+      headers: headers
+    };
+
+    const url = `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.TUTORS}`;
+
+    return this.http.post(url, formData, options);
   }
 
   getTutorByUser(id: any) {
     let response = this.http.get<ITutor>(
       `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.GET_TUTOR_USER}${id}`
     );
-    console.log('response: ' + response);
     return response;
   }
 
   updateTutor(data: IUpdateTutor) {
     let response = this.http.put(
-      `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.UPDATE_TUTOR}`,
+      `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.TUTORS}`,
       data
     );
-    console.log('response: ', response);
     return response;
   }
 }

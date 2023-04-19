@@ -16,5 +16,4 @@ export const API_ENDPOINTS = {
   GET_PROFILE: '/api/v1/user/byId/?id=',
   GET_TUTOR_USER: '/api/v1/tutors/byUser/?id=',
   UPDATE_PROFILE: '/api/v1/user/',
-  UPDATE_TUTOR: '/api/v1/tutors/',
 };

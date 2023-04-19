@@ -17,20 +17,33 @@ export class ReviewsComponent {
   };
 
   constructor(
-    private _reviewService:ReviewService,
+    private _reviewService: ReviewService,
     private route: ActivatedRoute,
-    private _dialog: MatDialog) {}
-
-  openReviewForm(){
-    const dialogRef = this._dialog.open(ReviewFormComponent);
-  }
+    private _dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     const id: any = this.route.snapshot.paramMap.get('id');
     this.getReviews(id);
   }
 
-  getReviews(tutorId:string) {
+  openReviewForm() {
+    const dialogRef = this._dialog.open(ReviewFormComponent, {
+      data: {
+        tutorId: this.route.snapshot.paramMap.get('id'),
+        fetchReviews: this.getReviews.bind(this),
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      const tutorId = this.route.snapshot.paramMap.get('id');
+      if (tutorId !== null) {
+        this.getReviews(tutorId);
+      }
+    });
+  }
+
+  getReviews(tutorId: string) {
     this._reviewService.getReviews(tutorId).subscribe({
       next: (data) => {
         this.review = data;

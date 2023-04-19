@@ -7,12 +7,12 @@
   
 <div class="card-container">
   <div class="card" *ngFor="let tutor of searchResults">
-    <div class="left-side" style="cursor: pointer;">
+    <div class="left-side" style="cursor: pointer;" (click)="redirectTutorDetails(tutor._id)">
         <img [src]="baseUrl + images + tutor.image" alt="tutor profile" />
     </div>
     <div class="center">
       <div class="card-title">
-        <h3 style="cursor: pointer;">
+        <h3 style="cursor: pointer;" (click)="redirectTutorDetails(tutor._id)">
           {{ tutor.fname }} {{ tutor.lname }}
         </h3>
       </div>

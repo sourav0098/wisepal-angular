@@ -2,21 +2,21 @@
 <div class="row">
   <mat-form-field appearance="outline">
     <mat-label>First Name</mat-label>
-    <input matInput readonly value="Sourav" />
+    <input matInput readonly [value]="fname" />
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Last Name</mat-label>
-    <input matInput readonly value="Choudhary" />
+    <input matInput readonly [value]="lname" />
   </mat-form-field>
 </div>
 <div class="row">
   <mat-form-field appearance="outline">
     <mat-label>Email</mat-label>
-    <input matInput readonly value="sourav@gmail.com" />
+    <input matInput readonly [value]="email" />
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Phone</mat-label>
-    <input matInput readonly value="9876543210" />
+    <input matInput readonly [value]="phone" />
   </mat-form-field>
 </div>
 <!-- Register Form -->
@@ -110,8 +110,9 @@
       ></textarea>
     </mat-form-field>
   </div>
+  <!-- Image -->
   <div class="row">
-    <input type="file" accept=".jpg,.jpeg,.png" />
+    <input type="file" accept=".jpg,.jpeg,.png" (change)="onFileSelected($event)"/>
   </div>
   <div class="row">
     <button mat-raised-button color="primary" type="submit">Submit</button>

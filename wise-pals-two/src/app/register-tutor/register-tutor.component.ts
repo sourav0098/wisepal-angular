@@ -8,6 +8,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { TutorService } from '../service/tutor.service';
 
 export interface Skill {
   name: string;
@@ -28,9 +29,14 @@ export class RegisterTutorComponent {
   skills: Skill[] = [];
   languages: Language[] = [];
 
+  fname: string | null = sessionStorage.getItem('firstName');
+  lname: string | null = sessionStorage.getItem('lastName');
+  email: string | null = sessionStorage.getItem('email');
+  phone: string | null = sessionStorage.getItem('phone');
+
   tutorForm: FormGroup;
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private _tutorService: TutorService) {
     this.tutorForm = this._fb.group({
       skills: new FormArray([], [Validators.required]),
       languages: new FormArray([], [Validators.required]),
@@ -38,10 +44,9 @@ export class RegisterTutorComponent {
         Validators.required,
         Validators.pattern('^[0-9]*$'),
       ]),
-      currency: new FormControl('',[
-        Validators.required
-      ]),
+      currency: new FormControl('', [Validators.required]),
       description: new FormControl(),
+      image: new FormControl(),
     });
   }
 
@@ -119,8 +124,25 @@ export class RegisterTutorComponent {
 
     if (this.tutorForm.valid) {
       console.log(this.tutorForm.value);
+      this._tutorService.addTutor(this.tutorForm.value).subscribe({
+        next: () => {
+          console.log('Tutor added');
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
     } else {
-      console.log("Invalid form");
+      console.log('Invalid form');
+    }
+  }
+
+  onFileSelected(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      this.tutorForm.patchValue({
+        image: file,
+      });
     }
   }
 }

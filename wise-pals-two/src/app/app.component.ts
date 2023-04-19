@@ -21,7 +21,7 @@ export class AppComponent  implements DoCheck{
   }
   ngDoCheck(): void {
     let currentroute = this.route.url;
-    let role=sessionStorage.getItem('role');
+    // let role=sessionStorage.getItem('roles');
 
     if (sessionStorage.getItem('accessToken')) {
       this.isLogged = true;
@@ -29,17 +29,11 @@ export class AppComponent  implements DoCheck{
       this.isLogged = false;
     }
 
-
+    
     if (currentroute == '/login' || currentroute == '/register') {
       this.isMenuVisible = false
     } else {
       this.isMenuVisible = true
-    }
-
-    if (role == 'admin') {
-      this.isTutor = true;
-    }else{
-      this.isTutor = false;
     }
   }
 }
