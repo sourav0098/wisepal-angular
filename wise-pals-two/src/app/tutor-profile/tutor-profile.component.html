@@ -1,18 +1,17 @@
 <div class="grid-container">
   <div class="grid-item item1">
     <div class="circular_image">
-      <img
-        [src]="image"
-        alt="profile-image"
-      />
+      <img [src]="image" alt="profile-image" />
     </div>
   </div>
   <div class="grid-item item2">
     <div class="mat-typography">
       <p class="overline" style="color: gray; font-weight: 500">INSTRUCTOR</p>
       <h3 class="mat-headline-4 name-head">
-        {{ tutor.fname}} {{ tutor.lname }}
-        <mat-icon style="cursor: pointer">mail</mat-icon>
+        {{ tutor.fname }} {{ tutor.lname }}
+        <button (click)="goToContact(tutor._id)">
+          <mat-icon style="cursor: pointer">mail</mat-icon>
+        </button>
       </h3>
       <p class="mat-h4 mb-0">Skills: {{ tutor.skills.join(", ") }}</p>
       <p class="mat-h4 mb-0">Knows {{ tutor.spokenLanguages.join(", ") }}</p>

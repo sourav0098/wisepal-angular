@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TutorService } from '../service/tutor.service';
 import { ActivatedRoute } from '@angular/router';
 import { API_ENDPOINTS } from 'src/util/apiEndpoints';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tutor-profile',
@@ -23,7 +24,8 @@ export class TutorProfileComponent {
 
   constructor(
     private _tutorService: TutorService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -41,5 +43,9 @@ export class TutorProfileComponent {
         console.log(err);
       },
     });
+  }
+
+  goToContact(id: string) {
+    this.router.navigate([`/contact/${id}`]);
   }
 }
