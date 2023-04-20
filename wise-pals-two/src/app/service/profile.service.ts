@@ -32,7 +32,6 @@ export class ProfileService {
     let response = this.http.get<IProfile>(
       `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.GET_PROFILE}${id}`
     );
-    console.log('response: ' + response);
     return response;
   }
 
@@ -41,7 +40,6 @@ export class ProfileService {
       `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.UPDATE_PROFILE}`,
       data
     );
-    console.log('response: ', response);
     return response;
   }
 }

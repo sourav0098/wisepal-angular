@@ -25,17 +25,12 @@ export class LoginComponent {
 
     let emailRegex = new RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$');
 
-
-    console.log({loginForm});
-
     if (emailRegex.test(loginForm.email) && passwordRegex.test(loginForm.password)) {
 
       this.service.loginUser(loginForm.email, loginForm.password).subscribe(item => {
         this.result = item;
-        console.log(this.result);
         if (this.result.accessToken) {
           console.log('Login successful');
-          console.log(this.result);
           sessionStorage.setItem('accessToken',this.result.accessToken);
             sessionStorage.setItem('email',loginForm.email);
             sessionStorage.setItem('firstName',this.result.name);

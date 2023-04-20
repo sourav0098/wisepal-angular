@@ -1,5 +1,5 @@
 export const API_ENDPOINTS = {
-  BASE_URL: 'http://localhost:5001',
+  BASE_URL: 'https://clear-jade-scarab.cyclic.app',
   TUTORS: '/api/v1/tutors',
   CONTENTS: '/api/v1/contents',
   IMAGES: '/img/',

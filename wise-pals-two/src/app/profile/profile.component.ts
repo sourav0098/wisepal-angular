@@ -43,7 +43,6 @@ export class ProfileComponent implements OnInit {
     if (this.isTutor) {
       this.tutorService.getTutorByUser(this.id).subscribe((res) => {
         this.tutor = res;
-        console.log(this.tutor);
         this.skills = this.tutor.skills;
         this.languages = this.tutor.spokenLanguages;
         this.tutorForm.get('cost')?.setValue(this.tutor.hourlyRate);
@@ -53,10 +52,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit2(form: NgForm) {
-    console.log(form.value.name);
-    console.log(form.value.lastName);
-    console.log(this.profile?.email);
-    console.log(form.value.phone);
     let data: IUpdateProfile = {
       name: form.value.name,
       lastName: form.value.lastName,

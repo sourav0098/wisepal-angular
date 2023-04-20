@@ -22,7 +22,6 @@ export class ContactService {
       `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.CONTACT}`,
       data
     );
-    console.log('response: ', response);
     return response;
   }
 }

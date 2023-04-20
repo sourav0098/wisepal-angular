@@ -18,7 +18,6 @@ export class TutorStatisticsComponent implements OnInit {
   ngOnInit(): void {
     Chart.register(...registerables);
     let id = sessionStorage.getItem('id');
-    console.log("id", id)
     this.http.get<any>(
       `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.CONTACTS}${API_ENDPOINTS.STATISTICS}/${id}`,
       {
@@ -27,7 +26,6 @@ export class TutorStatisticsComponent implements OnInit {
         })
       }
     ).subscribe(res => {
-      console.log(res)
       const daysOfWeek = [
         "Sunday",
         "Monday",

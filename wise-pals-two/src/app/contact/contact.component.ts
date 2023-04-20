@@ -33,8 +33,6 @@ export class ContactComponent implements OnInit {
     this.tutorService.getTutor(this.tutorId).subscribe((data) => {
       this.languages = data.spokenLanguages;
       this.skills = data.skills;
-
-      console.log(this.languages);
     });
   }
 

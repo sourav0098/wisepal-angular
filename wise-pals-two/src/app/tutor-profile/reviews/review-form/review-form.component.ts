@@ -40,7 +40,6 @@ export class ReviewFormComponent {
           console.log(err);
         },
       });
-      console.log(this.reviewForm.value);
     } else {
     }
   }

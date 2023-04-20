@@ -18,7 +18,6 @@ export class HomeComponent {
     this.http.get(`${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.CONTENTS}/63e7a5d14236e852403de3c6`)
       .subscribe(item => {
         this.result = item;
-        console.log('response: ', this.result);
         this.content = this.result.data.description;
       });
   }

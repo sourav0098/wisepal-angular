@@ -19,13 +19,11 @@ export class TutorListComponent {
 
   ngOnInit(): void {
     this.searchResults = this.searchResultsService.getSearchResults(); // retrieve search results from service
-    console.log(this.searchResults)
   }
   onSearch() {
     this.http.get<any[]>(
       `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.TUTORS}/?skill=${this.skill}`).subscribe(
         (items: any) => {
-          // console.log(items);
           this.searchResults = items;
         },
         error => {

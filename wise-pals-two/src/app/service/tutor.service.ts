@@ -41,14 +41,6 @@ export class TutorService {
   }
 
   addTutor(data: any): Observable<any> {
-    const formData: FormData = new FormData();
-    formData.append('image', data.image);
-    formData.append('skills', JSON.stringify(data.skills));
-    formData.append('languages', JSON.stringify(data.languages));
-    formData.append('hourlyCost', data.hourlyCost);
-    formData.append('currency', data.currency);
-    formData.append('description', data.description);
-
     const headers = new HttpHeaders();
     headers.append('Accept', 'application/json');
 
@@ -57,8 +49,7 @@ export class TutorService {
     };
 
     const url = `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.TUTORS}`;
-
-    return this.http.post(url, formData, options);
+    return this.http.post(url, data, options);
   }
 
   getTutorByUser(id: any) {

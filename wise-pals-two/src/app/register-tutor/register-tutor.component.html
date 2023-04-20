@@ -24,6 +24,7 @@
   class="example-form"
   [formGroup]="tutorForm"
   (ngSubmit)="onTutorFormSubmit()"
+  enctype="multipart/form-data"
 >
   <!-- Skills Chips Input -->
   <div class="row">
@@ -75,7 +76,7 @@
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
           [matChipInputAddOnBlur]="addOnBlur"
           (matChipInputTokenEnd)="add($event, 'language')"
-          formArrayName="languages"
+          formArrayName="spokenLanguages"
         />
       </mat-chip-grid>
     </mat-form-field>
@@ -83,8 +84,8 @@
   <div class="row">
     <mat-form-field appearance="outline">
       <mat-label>Hourly Cost</mat-label>
-      <input matInput formControlName="hourlyCost" />
-      <mat-error *ngIf="tutorForm.controls['hourlyCost'].invalid">
+      <input matInput formControlName="hourlyRate" />
+      <mat-error *ngIf="tutorForm.controls['hourlyRate'].invalid">
         Hourly cost is required and should be a number
       </mat-error>
     </mat-form-field>

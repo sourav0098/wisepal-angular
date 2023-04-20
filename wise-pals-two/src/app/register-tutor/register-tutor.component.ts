@@ -9,6 +9,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { TutorService } from '../service/tutor.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 export interface Skill {
   name: string;
@@ -36,11 +38,19 @@ export class RegisterTutorComponent {
 
   tutorForm: FormGroup;
 
-  constructor(private _fb: FormBuilder, private _tutorService: TutorService) {
+  constructor(
+    private _fb: FormBuilder,
+    private _tutorService: TutorService,
+    private toastr: ToastrService,
+    private router:Router
+  ) {
     this.tutorForm = this._fb.group({
+      userId: new FormControl(sessionStorage.getItem('id')),
+      fname: new FormControl(this.fname, [Validators.required]),
+      lname: new FormControl(this.lname, [Validators.required]),
       skills: new FormArray([], [Validators.required]),
-      languages: new FormArray([], [Validators.required]),
-      hourlyCost: new FormControl('', [
+      spokenLanguages: new FormArray([], [Validators.required]),
+      hourlyRate: new FormControl('', [
         Validators.required,
         Validators.pattern('^[0-9]*$'),
       ]),
@@ -115,7 +125,9 @@ export class RegisterTutorComponent {
       skillsFormArray.push(new FormControl(skill.name)); // Add each skill to the form array
     }
 
-    const languagesFormArray = this.tutorForm.get('languages') as FormArray;
+    const languagesFormArray = this.tutorForm.get(
+      'spokenLanguages'
+    ) as FormArray;
     languagesFormArray.clear(); // Clear the existing form array
 
     for (const language of this.languages) {
@@ -123,17 +135,27 @@ export class RegisterTutorComponent {
     }
 
     if (this.tutorForm.valid) {
-      console.log(this.tutorForm.value);
       this._tutorService.addTutor(this.tutorForm.value).subscribe({
-        next: () => {
-          console.log('Tutor added');
+        next: (res) => {
+          console.log(res)
+          this.toastr.success('Tutor added successfully');
+          // Get the current session storage value or set an initial value
+          let currentValue = sessionStorage.getItem('roles') || '2000';
+
+          // Append ',5777' to the current value
+          currentValue += ',5777';
+
+          // Set the updated value in the session storage
+          sessionStorage.setItem('roles', currentValue);
+          
+          this.router.navigateByUrl("/profile");
         },
         error: (err) => {
-          console.log(err);
+          this.toastr.error('Error adding tutor');
         },
       });
     } else {
-      console.log('Invalid form');
+      this.toastr.error('Please fill valid information in the form');
     }
   }
 
