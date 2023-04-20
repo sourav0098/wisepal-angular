@@ -37,7 +37,7 @@ export class LoginComponent {
           console.log('Login successful');
           console.log(this.result);
           sessionStorage.setItem('accessToken',this.result.accessToken);
-            sessionStorage.setItem('email',this.result.email);
+            sessionStorage.setItem('email',loginForm.email);
             sessionStorage.setItem('firstName',this.result.name);
             sessionStorage.setItem('lastName',this.result.lastName);
             sessionStorage.setItem('phone',this.result.phone);
